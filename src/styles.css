@@ -1,0 +1,40 @@
+:root {
+  /* core tokens - avoid using directly */
+  --primary-color: rgb(0, 148, 136);
+  --secondary-color: rgb(249, 189, 32);
+
+  --primary-dark-color: color-mix(in srgb, var(--primary-color) 80%, black);
+  --primary-darker-color: color-mix(in srgb, var(--primary-color) 60%, black);
+  --primary-darkest-color: color-mix(in srgb, var(--primary-color) 20%, black);
+
+  --primary-light-color: color-mix(in srgb, var(--primary-color) 80%, white);
+  --primary-lighter-color: color-mix(in srgb, var(--primary-color) 60%, white);
+
+  --neutral-grey: rgb(192, 192, 192);
+  --neutral-dark-grey: color-mix(in srgb, var(--neutral-grey) 70%, black);
+  --neutral-darker-grey: color-mix(in srgb, var(--neutral-grey) 40%, black);
+  --neutral-darkest-grey: color-mix(in srgb, var(--neutral-grey) 10%, black);
+  --neutral-light-grey: color-mix(in srgb, var(--neutral-grey) 70%, white);
+  --neutral-lighter-grey: color-mix(in srgb, var(--neutral-grey) 40%, white);
+  --neutral-lightest-grey: color-mix(in srgb, var(--neutral-grey) 10%, white);
+
+  /* theme tokens - try not to use directly, use references from component tokens */
+  /* global to all themes */
+  --brand-primary-color: var(--primary-color);
+  --brand-secondary-color: var(--secondary-color);
+  --brand-text-hover-color: var(--secondary-color);
+}
+
+:root [data-theme='light'] {
+  --theme-text-default-color: var(--neutral-darkest-grey);
+  --theme-cta-primary-color: var(--brand-primary-color);
+  --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
+  --theme-background-default-color: var(---neutral-light-grey);
+}
+
+:root [data-theme='dark'] {
+  --theme-text-default-color: var(--neutral-lightest-grey);
+  --theme-cta-primary-color: var(--brand-primary-color);
+  --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, black);
+  --theme-background-default-color: var(--primary-darkest-color);
+}
