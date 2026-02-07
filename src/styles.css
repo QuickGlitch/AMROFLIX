@@ -18,11 +18,16 @@
   --neutral-lighter-grey: color-mix(in srgb, var(--neutral-grey) 40%, white);
   --neutral-lightest-grey: color-mix(in srgb, var(--neutral-grey) 10%, white);
 
+  --secondary-dark-color: color-mix(in srgb, var(--secondary-color) 90%, black);
+
   /* theme tokens - try not to use directly, use references from component tokens */
   /* global to all themes */
   --brand-primary-color: var(--primary-color);
   --brand-secondary-color: var(--secondary-color);
+  --brand-secondary-color-soft: var(--secondary-dark-color);
   --brand-text-hover-color: var(--secondary-color);
+  --brand-tap-height: 2.5rem;
+  --brand-header-height: 4rem;
 }
 
 :root [data-theme='light'] {
@@ -30,6 +35,7 @@
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
   --theme-background-default-color: var(---neutral-light-grey);
+  --theme-background-contrast-color: var(--brand-secondary-color-soft);
 }
 
 :root [data-theme='dark'] {
@@ -37,4 +43,5 @@
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, black);
   --theme-background-default-color: var(--primary-darkest-color);
+  --theme-background-contrast-color: var(--brand-secondary-color-soft);
 }

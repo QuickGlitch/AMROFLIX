@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import AmroflixButton from './AmroflixButton.vue'
+import AmroflixSideBar from './AmroflixSideBar.vue'
 import { useTheme } from '../composables/useTheme'
+import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
 
 const { theme, toggleTheme } = useTheme()
+
+const isMenuOpen = ref<boolean>(false)
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
 <template>
@@ -11,6 +19,7 @@ const { theme, toggleTheme } = useTheme()
       <slot name="header">
         <slot name="header__left"
           ><div class="amroflix-layout__header__left">
+            <AmroflixButton @click="toggleMenu"><AmroflixIcon name="hamburger" /></AmroflixButton>
             <h1>Amroflix</h1>
           </div></slot
         >
@@ -19,10 +28,16 @@ const { theme, toggleTheme } = useTheme()
             <input type="text" placeholder="Search..." /></div
         ></slot>
         <slot name="header__right">
-          <AmroflixButton @click="toggleTheme">{{ theme }}</AmroflixButton>
+          <div class="amroflix-layout__header__right">
+            <AmroflixButton @click="toggleTheme">
+              <AmroflixIcon :name="theme === 'light' ? 'night_mode' : 'light_mode'" />
+            </AmroflixButton>
+          </div>
         </slot>
       </slot>
     </header>
+
+    <AmroflixSideBar :is-open="isMenuOpen" />
 
     <main class="amroflix-layout__body">
       <slot> </slot>
@@ -38,6 +53,12 @@ const { theme, toggleTheme } = useTheme()
 .amroflix-layout {
   /* component tokens */
   --amroflix-layout-header-text-color: var(--theme-text-default-color);
+  --amroflix-layout-header-height: var(--brand-header-height);
+  --amroflix-layout-header-background-color: color-mix(
+    in srgb,
+    var(--theme-background-default-color) 80%,
+    black
+  );
   --amroflix-layout-footer-background-color: var(--neutral-darkest-grey);
   --amroflix-layout-footer-text-color: var(--theme-text-default-color);
   --amroflix-layout-body-background-color: var(--theme-background-default-color);
@@ -47,28 +68,44 @@ const { theme, toggleTheme } = useTheme()
   min-height: 100vh;
 
   &__header {
+    box-sizing: border-box;
+    height: var(--amroflix-layout-header-height);
     display: flex;
-    justify-content: end;
-    background-color: var(--amroflix-layout-body-background-color);
+    align-items: center;
+    background-color: var(--amroflix-layout-header-background-color);
     color: var(--amroflix-layout-header-text-color);
-    padding: 1rem 2rem;
+    padding: 1rem 0.5rem;
 
     &__left {
       flex-shrink: 1;
+      align-items: center;
       display: flex;
       justify-content: start;
+      > * {
+        margin-right: 1rem;
+      }
     }
 
     &__center {
       flex-grow: 1;
+      align-items: center;
       display: flex;
       justify-content: center;
+      padding: 0 1rem;
+      > * {
+        margin-right: 1rem;
+      }
     }
 
     &__right {
       flex-shrink: 1;
+      min-width: 12rem;
+      align-items: center;
       display: flex;
       justify-content: end;
+      > * {
+        margin-right: 1rem;
+      }
     }
   }
 
