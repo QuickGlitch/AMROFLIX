@@ -21,7 +21,7 @@ const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
       class="amroflix-sidebar-item__background"
       :class="{ 'amroflix-sidebar-item__background--small': !isOpen }"
     />
-    <AmroflixButton variant="plain" :leading-icon="icon">
+    <AmroflixButton class="amroflix-sidebar-item__button" variant="plain" :leading-icon="icon">
       <Transition name="fade">
         <AmroflixTypography v-if="isOpen" size="large" weight="bold">
           {{ label }}
@@ -68,7 +68,7 @@ const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
     opacity: 1;
   }
 
-  :deep(.amroflix-button) {
+  .amroflix-sidebar-item__button {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -76,7 +76,7 @@ const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
     justify-content: start;
   }
 
-  &--closed :deep(.amroflix-button) {
+  &--closed .amroflix-sidebar-item__button {
     justify-content: center;
   }
 }
