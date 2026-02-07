@@ -1,16 +1,32 @@
 <template>
   <component :is="tag" :class="['amroflix-button', `amroflix-button--${variant}`]">
+    <slot name="leadingIcon">
+      <AmroflixIcon v-if="leadingIcon" :name="leadingIcon" />
+    </slot>
     <slot></slot>
+    <slot name="trailingIcon">
+      <AmroflixIcon v-if="trailingIcon" :name="trailingIcon" />
+    </slot>
   </component>
 </template>
 
 <script setup lang="ts">
+import type { IconName } from './AmroflixIcon/AmroflixIcon.vue'
+import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
+
 export type AmroflixButtonVariants = 'primary' | 'secondary' | 'plain'
 
-const { tag = 'button', variant = 'primary' } = defineProps<{
+const {
+  tag = 'button',
+  variant = 'primary',
+  leadingIcon = '',
+  trailingIcon,
+} = defineProps<{
   // defaults to 'button' but can be used for other tags (e.g., 'a') depending on UX
   tag?: string
   variant?: AmroflixButtonVariants
+  leadingIcon?: IconName
+  trailingIcon?: IconName
 }>()
 </script>
 
@@ -23,9 +39,18 @@ const { tag = 'button', variant = 'primary' } = defineProps<{
   --amroflix-button-hover-text-color: var(--theme-text-hover-color);
   --amroflix-button-hover-background-color: var(--theme-cta-primary-accent-color);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
   &--plain {
     all: unset;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   &--primary {

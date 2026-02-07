@@ -35,6 +35,9 @@ const { isOpen = false, items = [] } = defineProps<{
   height: calc(100vh - var(--amroflix-sidebar-offset));
   background-color: var(--amroflix-sidebar-background-color);
   color: var(--amroflix-sidebar-text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   &--closed {
     width: 5rem;
