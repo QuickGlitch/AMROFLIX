@@ -30,6 +30,7 @@ const { isOpen = false, items = [] } = defineProps<{
   --amroflix-sidebar-text-color: var(--theme-text-contrast-color);
   --amroflix-sidebar-offset: var(--brand-header-height);
 
+  box-sizing: border-box;
   position: absolute;
   top: var(--amroflix-sidebar-offset);
   height: calc(100vh - var(--amroflix-sidebar-offset));
@@ -42,7 +43,7 @@ const { isOpen = false, items = [] } = defineProps<{
   overflow: hidden;
 
   &--closed {
-    width: 3rem;
+    width: 4rem;
     transition: width 0.3s ease;
   }
 

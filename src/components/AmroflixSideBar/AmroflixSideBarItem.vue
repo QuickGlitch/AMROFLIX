@@ -16,50 +16,74 @@ const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
 </script>
 
 <template>
-  <AmroflixButton
-    class="amroflix-sidebar-item"
-    :class="[isOpen ? '' : 'amroflix-sidebar-item--closed']"
-    variant="plain"
-    :leading-icon="icon"
-  >
-    <Transition name="fade">
-      <AmroflixTypography
-        v-if="isOpen"
-        class="amroflix-sidebar-item__content"
-        size="large"
-        weight="bold"
-      >
-        {{ label }}
-      </AmroflixTypography>
-    </Transition>
-  </AmroflixButton>
+  <div class="amroflix-sidebar-item" :class="{ 'amroflix-sidebar-item--closed': !isOpen }">
+    <div
+      class="amroflix-sidebar-item__background"
+      :class="{ 'amroflix-sidebar-item__background--small': !isOpen }"
+    />
+    <AmroflixButton variant="plain" :leading-icon="icon">
+      <Transition name="fade">
+        <AmroflixTypography v-if="isOpen" size="large" weight="bold">
+          {{ label }}
+        </AmroflixTypography>
+      </Transition>
+    </AmroflixButton>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .amroflix-sidebar-item {
-  --amrofix-sidebar-item-height: var(--brand-tap-height);
-  --amrofix-sidebar-item-animation-duration: var(--theme-duration-long);
-  --amrofix-sidebar-item-animation-delay: 0.2s;
+  /* component tokens */
+  --amroflix-sidebar-item-height: var(--brand-tap-height);
+  --amroflix-sidebar-item-hover-background: var(--theme-cta-primary-color);
+  --amroflix-sidebar-item-hover-text-color: var(--brand-darkest-color);
+  --amroflix-sidebar-item-tab-radius: 0.5rem;
+  --amroflix-sidebar-item-transition-duration: 0.3s;
+  --amroflix-sidebar-item-transition-delay: 0.2s;
 
-  box-sizing: border-box;
+  position: relative;
   width: 100%;
-  display: flex;
-  justify-content: start;
-  height: var(--amrofix-sidebar-item-height);
-  overflow: hidden;
+  height: var(--amroflix-sidebar-item-height);
 
-  &__content {
-    white-space: nowrap;
+  &__background {
+    position: absolute;
+    inset: 0 var(--amroflix-sidebar-item-tab-radius) 0 -1rem;
+    background-color: var(--amroflix-sidebar-item-hover-background);
+    border-radius: 0 var(--amroflix-sidebar-item-tab-radius) var(--amroflix-sidebar-item-tab-radius)
+      0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+
+    &--small {
+      inset: 0 0 0 -1rem;
+    }
   }
 
-  &--closed {
+  &:hover {
+    color: var(--amroflix-sidebar-item-hover-text-color);
+  }
+
+  &:hover &__background {
+    opacity: 1;
+  }
+
+  :deep(.amroflix-button) {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    justify-content: start;
+  }
+
+  &--closed :deep(.amroflix-button) {
     justify-content: center;
   }
 }
 
 .fade-enter-active {
-  transition: opacity var(--amrofix-sidebar-item-animation-duration, 0.3s) ease;
-  transition-delay: var(--amrofix-sidebar-item-animation-delay, 0.2s);
+  transition: opacity var(--amroflix-sidebar-item-transition-duration) ease
+    var(--amroflix-sidebar-item-transition-delay);
 }
 
 .fade-leave-active {
