@@ -1,5 +1,9 @@
 :root {
+  /**************************************/
   /* core tokens - avoid using directly */
+  /**************************************/
+
+  /* colors */
   --primary-color: rgb(0, 148, 136);
   --secondary-color: rgb(249, 189, 32);
 
@@ -20,28 +24,71 @@
 
   --secondary-dark-color: color-mix(in srgb, var(--secondary-color) 90%, black);
 
+  /* typography */
+  --text-size-baseline: 1rem;
+  --text-size-tiny: 0.75rem;
+  --text-size-small: 0.875rem;
+  --text-size-medium: 1.125rem;
+  --text-size-large: 1.5rem;
+  --text-size-huge: 2rem;
+  --text-size-HUGE: 3rem;
+
+  --text-weight-baseline: 400;
+  --text-weight-light: 300;
+  --text-weight-bold: 700;
+  --text-weight-bolder: 900;
+
+  /********************************************************************************/
   /* theme tokens - try not to use directly, use references from component tokens */
-  /* global to all themes */
+  /********************************************************************************/
+
+  /* GLOBAL to all themes */
+  /* colors */
   --brand-primary-color: var(--primary-color);
   --brand-secondary-color: var(--secondary-color);
   --brand-secondary-color-soft: var(--secondary-dark-color);
   --brand-text-hover-color: var(--secondary-color);
+  /* spacing and sizes */
   --brand-tap-height: 2.5rem;
   --brand-header-height: 4rem;
+  /* typography */
+  --theme-text-default-size: var(--text-size-baseline);
+  --theme-text-small-size: var(--text-size-small);
+  --theme-text-medium-size: var(--text-size-medium);
+  --theme-text-large-size: var(--text-size-large);
+  --theme-text-huge-size: var(--text-size-huge);
+
+  --theme-text-default-weight: var(--text-weight-baseline);
+  --theme-text-light-weight: var(--text-weight-light);
+  --theme-text-bold-weight: var(--text-weight-bold);
+  --theme-text-bolder-weight: var(--text-weight-bolder);
 }
 
+/******************************/
+/* theme tokens - light theme */
+/******************************/
 :root [data-theme='light'] {
+  /* typography */
   --theme-text-default-color: var(--neutral-darkest-grey);
+
+  /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
+  /* background */
   --theme-background-default-color: var(---neutral-light-grey);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
 }
 
+/*****************************/
+/* theme tokens - dark theme */
+/*****************************/
 :root [data-theme='dark'] {
+  /* typography */
   --theme-text-default-color: var(--neutral-lightest-grey);
+  /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, black);
+  /* background */
   --theme-background-default-color: var(--primary-darkest-color);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
 }
