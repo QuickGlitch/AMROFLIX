@@ -19,7 +19,7 @@ const toggleMenu = () => {
       <slot name="header">
         <slot name="header__left"
           ><div class="amroflix-layout__header__left">
-            <AmroflixButton @click="toggleMenu"><AmroflixIcon name="hamburger" /></AmroflixButton>
+            <AmroflixButton leading-icon="hamburger" @click="toggleMenu"></AmroflixButton>
             <h1>Amroflix</h1>
           </div></slot
         >
@@ -29,8 +29,11 @@ const toggleMenu = () => {
         ></slot>
         <slot name="header__right">
           <div class="amroflix-layout__header__right">
-            <AmroflixButton @click="toggleTheme">
-              <AmroflixIcon :name="theme === 'light' ? 'night_mode' : 'light_mode'" />
+            <AmroflixButton
+              @click="toggleTheme"
+              :leading-icon="theme === 'light' ? 'night_mode' : 'light_mode'"
+            >
+              {{ theme }}
             </AmroflixButton>
           </div>
         </slot>

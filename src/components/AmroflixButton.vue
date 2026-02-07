@@ -1,11 +1,29 @@
 <template>
   <component :is="tag" :class="['amroflix-button', `amroflix-button--${variant}`]">
     <slot name="leadingIcon">
-      <AmroflixIcon v-if="leadingIcon" :name="leadingIcon" />
+      <AmroflixTypography
+        v-if="leadingIcon"
+        :weight="'bold'"
+        :size="'large'"
+        class="amroflix-button__content"
+      >
+        <AmroflixIcon :name="leadingIcon" />
+      </AmroflixTypography>
     </slot>
-    <slot></slot>
+    <slot name="content">
+      <AmroflixTypography v-if="$slots.default" :weight="'bold'" :size="'large'">
+        <slot></slot>
+      </AmroflixTypography>
+    </slot>
     <slot name="trailingIcon">
-      <AmroflixIcon v-if="trailingIcon" :name="trailingIcon" />
+      <AmroflixTypography
+        v-if="trailingIcon"
+        :weight="'bold'"
+        :size="'large'"
+        class="amroflix-button__content"
+      >
+        <AmroflixIcon :name="trailingIcon" />
+      </AmroflixTypography>
     </slot>
   </component>
 </template>
@@ -13,6 +31,7 @@
 <script setup lang="ts">
 import type { IconName } from './AmroflixIcon/AmroflixIcon.vue'
 import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
+import AmroflixTypography from './essentials/AmroflixTypography.vue'
 
 export type AmroflixButtonVariants = 'primary' | 'secondary' | 'plain'
 
@@ -68,6 +87,12 @@ const {
       background-color: var(--amroflix-button-hover-background-color);
       color: var(--amroflix-button-hover-text-color);
     }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

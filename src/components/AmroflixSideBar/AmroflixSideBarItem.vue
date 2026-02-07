@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import AmroflixButton from '../AmroflixButton.vue'
-import AmroflixIcon from '../AmroflixIcon/AmroflixIcon.vue'
 import { type IconName } from '../AmroflixIcon/AmroflixIcon.vue'
 import AmroflixTypography from '../essentials/AmroflixTypography.vue'
 
