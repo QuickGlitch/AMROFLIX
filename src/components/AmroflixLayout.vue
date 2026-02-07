@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import AmroflixButton from './AmroflixButton.vue'
 import AmroflixSideBar from './AmroflixSideBar/AmroflixSideBar.vue'
 import { useTheme } from '../composables/useTheme'
-import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
 
 const { theme, toggleTheme } = useTheme()
 

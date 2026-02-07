@@ -27,7 +27,7 @@ const { isOpen = false, items = [] } = defineProps<{
 .amroflix-sidebar {
   /* component tokens */
   --amroflix-sidebar-background-color: var(--theme-background-contrast-color);
-  --amroflix-sidebar-text-color: var(--theme-text-default-color);
+  --amroflix-sidebar-text-color: var(--theme-text-contrast-color);
   --amroflix-sidebar-offset: var(--brand-header-height);
 
   position: absolute;

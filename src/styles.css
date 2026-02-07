@@ -82,7 +82,7 @@
 :root [data-theme='light'] {
   /* typography */
   --theme-text-default-color: var(--neutral-darkest-grey);
-
+  --theme-text-contrast-color: var(--primary-darker-color);
   /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
@@ -97,6 +97,7 @@
 :root [data-theme='dark'] {
   /* typography */
   --theme-text-default-color: var(--neutral-lightest-grey);
+  --theme-text-contrast-color: var(--primary-darker-color);
   /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, black);
