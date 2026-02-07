@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import AmroflixButton from './AmroflixButton.vue'
-import AmroflixSideBar from './AmroflixSideBar.vue'
+import AmroflixSideBar from './AmroflixSideBar/AmroflixSideBar.vue'
 import { useTheme } from '../composables/useTheme'
 import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
 
@@ -37,7 +37,14 @@ const toggleMenu = () => {
       </slot>
     </header>
 
-    <AmroflixSideBar :is-open="isMenuOpen" />
+    <AmroflixSideBar
+      :is-open="isMenuOpen"
+      :items="[
+        { label: 'Home', icon: 'explore' },
+        { label: 'Search', icon: 'search' },
+        { label: 'Categories', icon: 'category' },
+      ]"
+    />
 
     <main class="amroflix-layout__body">
       <slot> </slot>

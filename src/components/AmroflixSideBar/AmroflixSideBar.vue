@@ -1,6 +1,9 @@
 <script setup lang="ts">
-const { isOpen = false } = defineProps<{
+import AmroflixSideBarItem, { type AmroflixSideBarItemIcon } from './AmroflixSideBarItem.vue'
+
+const { isOpen = false, items = [] } = defineProps<{
   isOpen?: boolean
+  items?: AmroflixSideBarItemIcon[]
 }>()
 </script>
 <template>
@@ -8,7 +11,15 @@ const { isOpen = false } = defineProps<{
     class="amroflix-sidebar"
     :class="isOpen ? 'amroflix-sidebar--open' : 'amroflix-sidebar--closed'"
   >
-    <slot>taco time taco time</slot>
+    <slot>
+      <amroflix-side-bar-item
+        v-for="item in items"
+        :is-open="isOpen"
+        :key="item.label"
+        :label="item.label"
+        :icon="item.icon"
+      />
+    </slot>
   </div>
 </template>
 
@@ -33,6 +44,10 @@ const { isOpen = false } = defineProps<{
   &--open {
     width: 12rem;
     transition: width 0.3s ease;
+  }
+
+  > * {
+    padding: 1rem;
   }
 }
 </style>
