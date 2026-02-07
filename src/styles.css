@@ -24,6 +24,11 @@
 
   --secondary-dark-color: color-mix(in srgb, var(--secondary-color) 90%, black);
 
+  /* times */
+  --duration-short: 150ms;
+  --duration-medium: 300ms;
+  --duration-long: 500ms;
+
   /* typography */
   --text-size-baseline: 1rem;
   --text-size-tiny: 0.75rem;
@@ -48,9 +53,11 @@
   --brand-secondary-color: var(--secondary-color);
   --brand-secondary-color-soft: var(--secondary-dark-color);
   --brand-text-hover-color: var(--secondary-color);
+
   /* spacing and sizes */
   --brand-tap-height: 2.5rem;
   --brand-header-height: 4rem;
+
   /* typography */
   --theme-text-default-size: var(--text-size-baseline);
   --theme-text-small-size: var(--text-size-small);
@@ -62,6 +69,11 @@
   --theme-text-light-weight: var(--text-weight-light);
   --theme-text-bold-weight: var(--text-weight-bold);
   --theme-text-bolder-weight: var(--text-weight-bolder);
+
+  /* duration */
+  --theme-duration-default: var(--duration-medium);
+  --theme-duration-short: var(--duration-short);
+  --theme-duration-long: var(--duration-long);
 }
 
 /******************************/

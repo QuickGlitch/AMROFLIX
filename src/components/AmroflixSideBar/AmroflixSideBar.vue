@@ -37,10 +37,12 @@ const { isOpen = false, items = [] } = defineProps<{
   color: var(--amroflix-sidebar-text-color);
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   gap: 1rem;
+  overflow: hidden;
 
   &--closed {
-    width: 5rem;
+    width: 3rem;
     transition: width 0.3s ease;
   }
 
@@ -49,8 +51,8 @@ const { isOpen = false, items = [] } = defineProps<{
     transition: width 0.3s ease;
   }
 
-  > * {
-    padding: 1rem;
+  > :first-child {
+    margin-top: 1rem;
   }
 }
 </style>
