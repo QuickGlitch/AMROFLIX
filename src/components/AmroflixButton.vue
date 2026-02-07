@@ -1,13 +1,16 @@
 <template>
-  <component :is="tag" class="amroflix-button">
+  <component :is="tag" :class="['amroflix-button', `amroflix-button--${variant}`]">
     <slot></slot>
   </component>
 </template>
 
 <script setup lang="ts">
-const { tag = 'button' } = defineProps<{
+export type AmroflixButtonVariants = 'primary' | 'secondary' | 'plain'
+
+const { tag = 'button', variant = 'primary' } = defineProps<{
   // defaults to 'button' but can be used for other tags (e.g., 'a') depending on UX
   tag?: string
+  variant?: AmroflixButtonVariants
 }>()
 </script>
 
@@ -20,19 +23,26 @@ const { tag = 'button' } = defineProps<{
   --amroflix-button-hover-text-color: var(--theme-text-hover-color);
   --amroflix-button-hover-background-color: var(--theme-cta-primary-accent-color);
 
-  /* applying component tokens */
-  height: var(--amroflix-button--height);
-  background-color: var(--amroflix-button-background-color);
-  color: var(--amroflix-button-text-color);
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  &--plain {
+    all: unset;
+    cursor: pointer;
+  }
 
-  &:hover {
-    background-color: var(--amroflix-button-hover-background-color);
-    color: var(--amroflix-button-hover-text-color);
+  &--primary {
+    /* applying component tokens */
+    height: var(--amroflix-button--height);
+    background-color: var(--amroflix-button-background-color);
+    color: var(--amroflix-button-text-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--amroflix-button-hover-background-color);
+      color: var(--amroflix-button-hover-text-color);
+    }
   }
 }
 </style>
