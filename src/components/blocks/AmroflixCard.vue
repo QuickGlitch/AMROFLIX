@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import AmroflixIcon from '@/components/essentials/AmroflixIcon/AmroflixIcon.vue'
+
 type AmroflixCardProps = {
   as?: keyof HTMLElementTagNameMap
   variant?: 'vertical' | 'horizontal'
   title?: string
   subtitle?: string
   footer?: string
+  rating?: number | null
   media?: {
     src: string
     alt: string
@@ -17,6 +20,7 @@ const {
   title,
   subtitle,
   footer,
+  rating,
 } = defineProps<AmroflixCardProps>()
 </script>
 
@@ -40,9 +44,12 @@ const {
         <slot name="subtitle">
           <h4>{{ subtitle }}</h4>
         </slot>
-        <!-- <slot name="content">
-          <p>{{ content }}</p>
-        </slot> -->
+        <slot name="rating">
+          <div v-if="rating !== undefined && rating !== null" class="amroflix-card__rating">
+            <AmroflixIcon name="circle_star" />
+            <span>{{ rating.toFixed(1) }}</span>
+          </div>
+        </slot>
         <slot name="footer">
           <div>{{ footer }}</div>
         </slot>
@@ -108,6 +115,16 @@ const {
         color: var(--amroflix-card-contrast-text-color);
         line-height: var(--amroflix-card-subtitle-line-height);
         margin: var(--amroflix-card-subtitle-margin-top) 0 0 0;
+      }
+
+      .amroflix-card__rating {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+        color: var(--brand-secondary-color);
+        font-weight: var(--text-weight-bold);
+        font-size: var(--text-size-small);
       }
     }
   }

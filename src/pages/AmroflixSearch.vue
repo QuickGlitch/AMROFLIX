@@ -66,6 +66,7 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
           :as="'li'"
           :title="show.name"
           :subtitle="show.genres.join(', ')"
+          :rating="show.rating?.average"
           :content="show.summary ? show.summary.replace(/<[^>]+>/g, '') : 'No summary available.'"
           :media="{
             src: show.image?.medium || '',

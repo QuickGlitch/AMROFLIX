@@ -8,6 +8,7 @@ import SearchIcon from './search.svg?raw'
 import CategoryIcon from './category.svg?raw'
 import ExploreIcon from './explore.svg?raw'
 import SquareCircleIcon from './square_circle.svg?raw'
+import CircleStarIcon from './circle_star.svg?raw'
 
 export type IconName =
   | 'hamburger'
@@ -17,6 +18,7 @@ export type IconName =
   | 'category'
   | 'explore'
   | 'square_circle'
+  | 'circle_star'
 
 const { name } = defineProps<{
   name: IconName
@@ -30,6 +32,7 @@ const iconMap: Record<IconName, string> = {
   hamburger: HamburgerIcon,
   light_mode: LightModeIcon,
   night_mode: NightModeIcon,
+  circle_star: CircleStarIcon,
 }
 
 const svgContent = computed(() => {
