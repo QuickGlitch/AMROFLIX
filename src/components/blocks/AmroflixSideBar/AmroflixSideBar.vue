@@ -44,7 +44,7 @@ const navigate = (item: AmroflixNavigationItem) => {
   --amroflix-sidebar-offset: var(--brand-header-height);
 
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   top: var(--amroflix-sidebar-offset);
   height: calc(100vh - var(--amroflix-sidebar-offset));
   background-color: var(--amroflix-sidebar-background-color);
@@ -56,12 +56,12 @@ const navigate = (item: AmroflixNavigationItem) => {
   overflow: hidden;
 
   &--closed {
-    width: 4rem;
+    width: var(--amroflix-layout-sidebar-width-closed, 4rem);
     transition: width 0.3s ease;
   }
 
   &--open {
-    width: 12rem;
+    width: var(--amroflix-layout-sidebar-width-open, 12rem);
     transition: width 0.3s ease;
   }
 

@@ -14,7 +14,11 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <div class="amroflix-layout" :data-theme="theme">
+  <div
+    class="amroflix-layout"
+    :class="{ 'amroflix-layout--sidebar-open': isMenuOpen }"
+    :data-theme="theme"
+  >
     <header class="amroflix-layout__header">
       <slot name="header">
         <slot name="header__left"
@@ -44,7 +48,9 @@ const toggleMenu = () => {
     <AmroflixSideBar :is-open="isMenuOpen" :items="navigationItems" />
 
     <main class="amroflix-layout__body">
-      <slot> </slot>
+      <div class="amroflix-layout__body__content">
+        <slot> </slot>
+      </div>
     </main>
 
     <footer class="amroflix-layout__footer">
@@ -56,6 +62,9 @@ const toggleMenu = () => {
 <style lang="scss" scoped>
 .amroflix-layout {
   /* component tokens */
+  --amroflix-layout-sidebar-width-closed: 4rem;
+  --amroflix-layout-sidebar-width-open: 12rem;
+  --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-closed);
   --amroflix-layout-header-text-color: var(--theme-text-default-color);
   --amroflix-layout-header-height: var(--brand-header-height);
   --amroflix-layout-header-background-color: color-mix(
@@ -71,7 +80,14 @@ const toggleMenu = () => {
   flex-direction: column;
   min-height: 100vh;
 
+  &--sidebar-open {
+    --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-open);
+  }
+
   &__header {
+    position: fixed;
+    inset: 0 0 auto 0;
+
     box-sizing: border-box;
     height: var(--amroflix-layout-header-height);
     display: flex;
@@ -116,6 +132,14 @@ const toggleMenu = () => {
   &__body {
     background-color: var(--amroflix-layout-body-background-color);
     flex: 1;
+    &__content {
+      box-sizing: border-box;
+      padding: 1rem 0 1rem 1rem;
+      margin-top: var(--amroflix-layout-header-height);
+      margin-left: var(--amroflix-layout-sidebar-width);
+      width: calc(100% - var(--amroflix-layout-sidebar-width));
+      transition: margin-left 0.3s ease;
+    }
   }
 
   &__footer {
