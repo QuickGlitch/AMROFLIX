@@ -82,6 +82,7 @@ const toggleMenu = () => {
   }
 
   &__header {
+    z-index: 1;
     position: fixed;
     inset: 0 0 auto 0;
 
