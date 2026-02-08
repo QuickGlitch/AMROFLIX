@@ -38,7 +38,6 @@ const toggleMenu = () => {
               @click="toggleTheme"
               :leading-icon="theme === 'light' ? 'night_mode' : 'light_mode'"
             >
-              {{ theme }}
             </AmroflixButton>
           </div>
         </slot>
@@ -132,6 +131,7 @@ const toggleMenu = () => {
   &__body {
     background-color: var(--amroflix-layout-body-background-color);
     flex: 1;
+    overflow-x: hidden;
     &__content {
       box-sizing: border-box;
       padding: 1rem 0 1rem 1rem;

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import AmroflixLayout from '@/components/blocks/AmroflixLayout.vue'
 import { useSearchShows } from '@/composables/TVMaze/useSearchShows'
+import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
 
 const searchQuery = ref('')
 const { data: searchResults, isLoading, isError, error } = useSearchShows(searchQuery)
@@ -20,6 +21,12 @@ const { data: searchResults, isLoading, isError, error } = useSearchShows(search
         />
       </div>
 
+      <AmroflixCard
+        v-if="!searchQuery.trim().length"
+        title="Welcome to Amroflix!"
+        subtitle="Start typing to search for your favorite TV shows."
+      />
+
       <div v-if="isLoading" class="amroflix-search__status">Loading...</div>
 
       <div v-else-if="isError" class="amroflix-search__status amroflix-search__status--error">
@@ -27,23 +34,22 @@ const { data: searchResults, isLoading, isError, error } = useSearchShows(search
       </div>
 
       <ul v-else-if="searchResults?.length" class="amroflix-search__results">
-        <li
+        <AmroflixCard
           v-for="result in searchResults"
           :key="result.show.id"
-          class="amroflix-search__result-item"
-        >
-          <img
-            v-if="result.show.image?.medium"
-            :src="result.show.image.medium"
-            :alt="result.show.name"
-            class="amroflix-search__result-image"
-          />
-          <div class="amroflix-search__result-info">
-            <h3>{{ result.show.name }}</h3>
-            <p v-if="result.show.genres.length">{{ result.show.genres.join(', ') }}</p>
-            <p v-if="result.show.rating.average">Rating: {{ result.show.rating.average }}</p>
-          </div>
-        </li>
+          :as="'li'"
+          :title="result.show.name"
+          :subtitle="result.show.genres.join(', ')"
+          :content="
+            result.show.summary
+              ? result.show.summary.replace(/<[^>]+>/g, '')
+              : 'No summary available.'
+          "
+          :media="{
+            src: result.show.image?.medium || '',
+            alt: result.show.name,
+          }"
+        />
       </ul>
 
       <div v-else-if="searchQuery.trim().length > 0" class="amroflix-search__status">
@@ -53,9 +59,19 @@ const { data: searchResults, isLoading, isError, error } = useSearchShows(search
   </AmroflixLayout>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .amroflix-search {
   padding: 1.5rem;
+
+  &__results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
 }
 
 .amroflix-search__input-wrapper {
@@ -63,6 +79,7 @@ const { data: searchResults, isLoading, isError, error } = useSearchShows(search
 }
 
 .amroflix-search__input {
+  box-sizing: border-box;
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
@@ -80,39 +97,5 @@ const { data: searchResults, isLoading, isError, error } = useSearchShows(search
 
 .amroflix-search__status--error {
   color: var(--color-error, #e53935);
-}
-
-.amroflix-search__results {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.amroflix-search__result-item {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  background: var(--color-surface, #fff);
-}
-
-.amroflix-search__result-image {
-  width: 80px;
-  height: auto;
-  border-radius: 0.25rem;
-  object-fit: cover;
-}
-
-.amroflix-search__result-info h3 {
-  margin: 0 0 0.25rem;
-}
-
-.amroflix-search__result-info p {
-  margin: 0;
-  color: var(--color-text-secondary, #888);
-  font-size: 0.875rem;
 }
 </style>

@@ -55,6 +55,7 @@
   --brand-text-hover-color: var(--secondary-color);
   --brand-darkest-color: var(--neutral-darkest-grey);
   --brand-neutral-color: var(--neutral-grey);
+  --theme-text-secondary-color: var(--brand-secondary-color);
 
   /* spacing and sizes */
   --brand-tap-height: 2.5rem;
@@ -84,7 +85,7 @@
 :root [data-theme='light'] {
   /* typography */
   --theme-text-default-color: var(--neutral-darkest-grey);
-  --theme-text-contrast-color: var(--primary-darker-color);
+  --theme-text-subtle-color: var(--primary-darker-color);
   /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
@@ -99,7 +100,7 @@
 :root [data-theme='dark'] {
   /* typography */
   --theme-text-default-color: var(--neutral-lightest-grey);
-  --theme-text-contrast-color: var(--primary-darker-color);
+  --theme-text-subtle-color: var(--primary-dark-color);
   /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, black);
