@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import AmroflixButton from './AmroflixButton.vue'
+import AmroflixButton from '../essentials/AmroflixButton.vue'
 import AmroflixSideBar from './AmroflixSideBar/AmroflixSideBar.vue'
-import { useTheme } from '../composables/useTheme'
+import { useTheme } from '../../composables/useTheme'
 
 const { theme, toggleTheme } = useTheme()
 

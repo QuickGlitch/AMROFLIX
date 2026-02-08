@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import type { IconName } from './AmroflixIcon/AmroflixIcon.vue'
+import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
+import AmroflixTypography from './AmroflixTypography.vue'
+
+export type AmroflixButtonVariants = 'primary' | 'secondary' | 'plain'
+
+const {
+  tag = 'button',
+  variant = 'primary',
+  leadingIcon = '',
+  trailingIcon,
+} = defineProps<{
+  // defaults to 'button' but can be used for other tags (e.g., 'a') depending on UX
+  tag?: string
+  variant?: AmroflixButtonVariants
+  leadingIcon?: IconName
+  trailingIcon?: IconName
+}>()
+</script>
+
 <template>
   <component :is="tag" :class="['amroflix-button', `amroflix-button--${variant}`]">
     <slot name="leadingIcon">
@@ -27,27 +48,6 @@
     </slot>
   </component>
 </template>
-
-<script setup lang="ts">
-import type { IconName } from './AmroflixIcon/AmroflixIcon.vue'
-import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
-import AmroflixTypography from './essentials/AmroflixTypography.vue'
-
-export type AmroflixButtonVariants = 'primary' | 'secondary' | 'plain'
-
-const {
-  tag = 'button',
-  variant = 'primary',
-  leadingIcon = '',
-  trailingIcon,
-} = defineProps<{
-  // defaults to 'button' but can be used for other tags (e.g., 'a') depending on UX
-  tag?: string
-  variant?: AmroflixButtonVariants
-  leadingIcon?: IconName
-  trailingIcon?: IconName
-}>()
-</script>
 
 <style lang="scss" scoped>
 .amroflix-button {

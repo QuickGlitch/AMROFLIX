@@ -54,6 +54,7 @@
   --brand-secondary-color-soft: var(--secondary-dark-color);
   --brand-text-hover-color: var(--secondary-color);
   --brand-darkest-color: var(--neutral-darkest-grey);
+  --brand-neutral-color: var(--neutral-grey);
 
   /* spacing and sizes */
   --brand-tap-height: 2.5rem;

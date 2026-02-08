@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AmroflixLayout from './components/AmroflixLayout.vue'
+import AmroflixLayout from './components/blocks/AmroflixLayout.vue'
 import { provideTheme } from './composables/useTheme'
 
 provideTheme('dark')

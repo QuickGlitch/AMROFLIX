@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import AmroflixButton from '../AmroflixButton.vue'
-import { type IconName } from '../AmroflixIcon/AmroflixIcon.vue'
-import AmroflixTypography from '../essentials/AmroflixTypography.vue'
+import AmroflixButton from '../../essentials/AmroflixButton.vue'
+import { type IconName } from '../../essentials/AmroflixIcon/AmroflixIcon.vue'
+import AmroflixTypography from '../../essentials/AmroflixTypography.vue'
 
 export type AmroflixSideBarItemIcon = {
   label: string
@@ -10,13 +10,20 @@ export type AmroflixSideBarItemIcon = {
 
 export type AmroflixSideBarItemProps = AmroflixSideBarItemIcon & {
   isOpen?: boolean
+  selected?: boolean
 }
 
-const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
+const { label, icon, isOpen = false, selected = false } = defineProps<AmroflixSideBarItemProps>()
 </script>
 
 <template>
-  <div class="amroflix-sidebar-item" :class="{ 'amroflix-sidebar-item--closed': !isOpen }">
+  <div
+    class="amroflix-sidebar-item"
+    :class="{
+      'amroflix-sidebar-item--closed': !isOpen,
+      'amroflix-sidebar-item--selected': selected,
+    }"
+  >
     <div
       class="amroflix-sidebar-item__background"
       :class="{ 'amroflix-sidebar-item__background--small': !isOpen }"
@@ -40,7 +47,7 @@ const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
   --amroflix-sidebar-item-tab-radius: 0.5rem;
   --amroflix-sidebar-item-transition-duration: 0.3s;
   --amroflix-sidebar-item-transition-delay: 0.2s;
-
+  --amroflix-sidebar-item-selected-background: var(--theme-background-default-color);
   position: relative;
   width: 100%;
   height: var(--amroflix-sidebar-item-height);
@@ -60,12 +67,21 @@ const { label, icon, isOpen = false } = defineProps<AmroflixSideBarItemProps>()
     }
   }
 
-  &:hover {
+  &:not(&--selected):hover {
     color: var(--amroflix-sidebar-item-hover-text-color);
   }
 
-  &:hover &__background {
+  &:not(&--selected):hover &__background {
     opacity: 1;
+  }
+
+  &--selected {
+    color: var(--brand-neutral-color);
+  }
+
+  &--selected &__background {
+    opacity: 1;
+    background-color: var(--amroflix-sidebar-item-selected-background);
   }
 
   .amroflix-sidebar-item__button {

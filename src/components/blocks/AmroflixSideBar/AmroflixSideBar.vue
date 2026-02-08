@@ -1,10 +1,39 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 import AmroflixSideBarItem, { type AmroflixSideBarItemIcon } from './AmroflixSideBarItem.vue'
+
+type SideBarItem = AmroflixSideBarItemIcon & { selected?: boolean }
 
 const { isOpen = false, items = [] } = defineProps<{
   isOpen?: boolean
   items?: AmroflixSideBarItemIcon[]
 }>()
+
+const localItems = ref<SideBarItem[]>([])
+
+const syncItems = () => {
+  const selectedByLabel = new Map(
+    localItems.value.map((item) => [item.label, item.selected ?? false]),
+  )
+
+  localItems.value = items.map((item) => ({
+    ...item,
+    selected: item.selected ?? selectedByLabel.get(item.label) ?? false,
+  }))
+}
+
+const selectItem = (label: string) => {
+  localItems.value = localItems.value.map((item) => ({
+    ...item,
+    selected: item.label === label,
+  }))
+}
+
+watch(
+  () => items,
+  () => syncItems(),
+  { immediate: true, deep: true },
+)
 </script>
 <template>
   <div
@@ -13,11 +42,13 @@ const { isOpen = false, items = [] } = defineProps<{
   >
     <slot>
       <amroflix-side-bar-item
-        v-for="item in items"
+        v-for="item in localItems"
         :is-open="isOpen"
         :key="item.label"
         :label="item.label"
         :icon="item.icon"
+        :selected="item.selected"
+        @click="selectItem(item.label)"
       />
     </slot>
   </div>
