@@ -53,26 +53,40 @@ const {
 
 <style lang="scss" scoped>
 .amroflix-card {
+  /* component tokens */
   --amroflix-card-surface-color: var(--theme-background-default-color);
   --amroflix-card-default-text-color: var(--theme-text-default-color);
   --amroflix-card-contrast-text-color: var(--theme-text-secondary-color);
+  --amroflix-card-border-radius: var(--brand-card-border-radius);
+  --amroflix-card-shadow: var(--brand-card-shadow);
+  --amroflix-card-content-padding: 0.5rem;
+  --amroflix-card-title-line-height: 1.5rem;
+  --amroflix-card-subtitle-line-height: 1.2rem;
+  --amroflix-card-subtitle-margin-top: 0.5rem;
+  --amroflix-card-vertical-width: 200px;
+  --amroflix-card-vertical-height: 400px;
+  --amroflix-card-vertical-media-height: 70%;
+  --amroflix-card-horizontal-width: 300px;
+  --amroflix-card-horizontal-height: 200px;
+  --amroflix-card-horizontal-media-width: 40%;
+  --amroflix-card-media-background: var(--neutral-darkest-grey);
 
   background-color: var(--amroflix-card-surface-color);
   color: var(--amroflix-card-default-text-color);
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: var(--amroflix-card-border-radius);
+  box-shadow: var(--amroflix-card-shadow);
   overflow: hidden;
   flex-direction: column;
 
   &--vertical {
     width: 100%;
-    min-width: 200px;
-    max-width: 200px;
-    height: 400px;
+    min-width: var(--amroflix-card-vertical-width);
+    max-width: var(--amroflix-card-vertical-width);
+    height: var(--amroflix-card-vertical-height);
 
     .amroflix-card__media_section {
-      background-color: black;
-      height: 70%;
+      background-color: var(--amroflix-card-media-background);
+      height: var(--amroflix-card-vertical-media-height);
 
       &__media {
         width: 100%;
@@ -82,29 +96,29 @@ const {
     }
 
     .amroflix-card__content {
-      padding: 0.5rem;
+      padding: var(--amroflix-card-content-padding);
 
       h3 {
         color: var(--amroflix-card-default-text-color);
-        line-height: 1.5rem;
+        line-height: var(--amroflix-card-title-line-height);
         margin: 0 0;
       }
 
       h4 {
         color: var(--amroflix-card-contrast-text-color);
-        line-height: 1.2rem;
-        margin: 0.5rem 0 0 0;
+        line-height: var(--amroflix-card-subtitle-line-height);
+        margin: var(--amroflix-card-subtitle-margin-top) 0 0 0;
       }
     }
   }
 
   &--horizontal {
-    width: 300px;
-    height: 200px;
+    width: var(--amroflix-card-horizontal-width);
+    height: var(--amroflix-card-horizontal-height);
     flex-direction: row;
 
     .amroflix-card__media {
-      width: 40%;
+      width: var(--amroflix-card-horizontal-media-width);
       height: 100%;
       object-fit: cover;
     }

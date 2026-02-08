@@ -61,6 +61,9 @@
   /* spacing and sizes */
   --brand-tap-height: 2.5rem;
   --brand-header-height: 4rem;
+  --brand-card-border-radius: 0.5rem;
+  --brand-input-border-radius: 0.5rem;
+  --brand-card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   /* typography */
   --theme-text-default-size: var(--text-size-baseline);
@@ -93,6 +96,11 @@
   /* background */
   --theme-background-default-color: var(--neutral-light-grey);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
+  --theme-background-surface-color: white;
+  /* borders */
+  --theme-border-default-color: var(--neutral-grey);
+  /* status */
+  --theme-status-error-color: rgb(229, 57, 53);
 }
 
 /*****************************/
@@ -108,4 +116,9 @@
   /* background */
   --theme-background-default-color: var(--primary-darkest-color);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
+  --theme-background-surface-color: var(--primary-darker-color);
+  /* borders */
+  --theme-border-default-color: var(--neutral-darker-grey);
+  /* status */
+  --theme-status-error-color: rgb(244, 67, 54);
 }
