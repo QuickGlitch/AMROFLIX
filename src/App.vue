@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import AmroflixLayout from './components/blocks/AmroflixLayout.vue'
 import { provideTheme } from './composables/useTheme'
+import AmroflixHome from './pages/AmroflixHome.vue'
 
 provideTheme('dark')
 </script>
 
 <template>
-  <AmroflixLayout>
-    <template #default> welcome </template>
-  </AmroflixLayout>
+  <AmroflixHome />
 </template>
