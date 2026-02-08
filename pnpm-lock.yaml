@@ -14,6 +14,12 @@ importers:
       '@vueuse/core':
         specifier: ^14.2.0
         version: 14.2.0(vue@3.5.27(typescript@5.9.3))
+      embla-carousel-accessibility:
+        specifier: 9.0.0-rc01
+        version: 9.0.0-rc01(embla-carousel@9.0.0-rc01)
+      embla-carousel-vue:
+        specifier: 9.0.0-rc01
+        version: 9.0.0-rc01(vue@3.5.27(typescript@5.9.3))
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
@@ -1317,6 +1323,24 @@ packages:
 
   electron-to-chromium@1.5.286:
     resolution: {integrity: sha512-9tfDXhJ4RKFNerfjdCcZfufu49vg620741MNs26a9+bhLThdB+plgMeou98CAaHu/WATj2iHOOHTp1hWtABj2A==}
+
+  embla-carousel-accessibility@9.0.0-rc01:
+    resolution: {integrity: sha512-H0ur9/ctEE5cc0/NLRD4aS2aNHLX1vJumFoPztcHpe6zmIZtg42pNlfpIuWwnAH9sqTs8J+puce9GAJTNsGI3g==}
+    peerDependencies:
+      embla-carousel: 9.0.0-rc01
+
+  embla-carousel-reactive-utils@9.0.0-rc01:
+    resolution: {integrity: sha512-RnW0NMrL7wVAQb9jro+l96hLI2JairyFHS2Jv+fvXakveD/c5aD9aoNH94YRbTmi0G7PxrKSxydmCpTy5eFmrA==}
+    peerDependencies:
+      embla-carousel: 9.0.0-rc01
+
+  embla-carousel-vue@9.0.0-rc01:
+    resolution: {integrity: sha512-Fy3MeolfZXwDIUdfxtQ3Kb+4dfjV9kosXQ9ic+Lfj2wxxm2YZO/g2znZ1cbd71ES7WCXy0DsunufHIINFT18ow==}
+    peerDependencies:
+      vue: ^3.2.37
+
+  embla-carousel@9.0.0-rc01:
+    resolution: {integrity: sha512-4BTERU1gAXgg4Vl0m7hQ1GzePGLNNfM2j030ww8i9idiPXumyRUpaNUDfT2zx1Hv8um1Ew7QKBy/HdNPz8L30g==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -3659,6 +3683,22 @@ snapshots:
       semver: 7.7.4
 
   electron-to-chromium@1.5.286: {}
+
+  embla-carousel-accessibility@9.0.0-rc01(embla-carousel@9.0.0-rc01):
+    dependencies:
+      embla-carousel: 9.0.0-rc01
+
+  embla-carousel-reactive-utils@9.0.0-rc01(embla-carousel@9.0.0-rc01):
+    dependencies:
+      embla-carousel: 9.0.0-rc01
+
+  embla-carousel-vue@9.0.0-rc01(vue@3.5.27(typescript@5.9.3)):
+    dependencies:
+      embla-carousel: 9.0.0-rc01
+      embla-carousel-reactive-utils: 9.0.0-rc01(embla-carousel@9.0.0-rc01)
+      vue: 3.5.27(typescript@5.9.3)
+
+  embla-carousel@9.0.0-rc01: {}
 
   emoji-regex@8.0.0: {}
 
