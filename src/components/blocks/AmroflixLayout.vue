@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import AmroflixButton from '../essentials/AmroflixButton.vue'
 import AmroflixSideBar from './AmroflixSideBar/AmroflixSideBar.vue'
 import { useTheme } from '../../composables/useTheme'
+import { navigationItems } from '../../router/navigation'
 
 const { theme, toggleTheme } = useTheme()
 
@@ -22,10 +23,11 @@ const toggleMenu = () => {
             <h1>Amroflix</h1>
           </div></slot
         >
-        <slot name="header__center"
-          ><div class="amroflix-layout__header__center">
-            <input type="text" placeholder="Search..." /></div
-        ></slot>
+        <div class="amroflix-layout__header__center">
+          <slot name="header__center">
+            <input type="text" placeholder="Search..." />
+          </slot>
+        </div>
         <slot name="header__right">
           <div class="amroflix-layout__header__right">
             <AmroflixButton
@@ -39,14 +41,7 @@ const toggleMenu = () => {
       </slot>
     </header>
 
-    <AmroflixSideBar
-      :is-open="isMenuOpen"
-      :items="[
-        { label: 'Home', icon: 'explore' },
-        { label: 'Search', icon: 'search' },
-        { label: 'Categories', icon: 'category' },
-      ]"
-    />
+    <AmroflixSideBar :is-open="isMenuOpen" :items="navigationItems" />
 
     <main class="amroflix-layout__body">
       <slot> </slot>
