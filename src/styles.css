@@ -56,6 +56,7 @@
   --brand-darkest-color: var(--neutral-darkest-grey);
   --brand-neutral-color: var(--neutral-grey);
   --theme-text-secondary-color: var(--brand-secondary-color);
+  --theme-header-background-color: color-mix(in srgb, var(--primary-darkest-color) 80%, black);
 
   /* spacing and sizes */
   --brand-tap-height: 2.5rem;
@@ -90,7 +91,7 @@
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
   /* background */
-  --theme-background-default-color: var(---neutral-light-grey);
+  --theme-background-default-color: var(--neutral-light-grey);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
 }
 

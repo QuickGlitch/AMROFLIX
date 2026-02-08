@@ -66,11 +66,7 @@ const toggleMenu = () => {
   --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-closed);
   --amroflix-layout-header-text-color: var(--theme-text-default-color);
   --amroflix-layout-header-height: var(--brand-header-height);
-  --amroflix-layout-header-background-color: color-mix(
-    in srgb,
-    var(--theme-background-default-color) 80%,
-    black
-  );
+  --amroflix-layout-header-background-color: var(--theme-header-background-color);
   --amroflix-layout-footer-background-color: var(--neutral-darkest-grey);
   --amroflix-layout-footer-text-color: var(--theme-text-default-color);
   --amroflix-layout-body-background-color: var(--theme-background-default-color);
