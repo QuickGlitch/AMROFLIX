@@ -70,10 +70,12 @@ const toggleMenu = () => {
   --amroflix-layout-footer-background-color: var(--neutral-darkest-grey);
   --amroflix-layout-footer-text-color: var(--theme-text-default-color);
   --amroflix-layout-body-background-color: var(--theme-background-default-color);
+  --amroflix-layout-default-text-color: var(--theme-text-default-color);
 
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: var(--amroflix-layout-default-text-color);
 
   &--sidebar-open {
     --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-open);

@@ -82,6 +82,7 @@ watch(emblaApi, (api) => {
   checkIfNearEnd()
 })
 
+// clean up listeners on unmount unless you like leaks
 onUnmounted(() => {
   const api = emblaApi.value
   if (!api) return

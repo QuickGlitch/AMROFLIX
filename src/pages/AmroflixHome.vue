@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import AmroflixCarousel from '@/components/blocks/AmroflixCarousel.vue'
 import AmroflixLayout from '@/components/blocks/AmroflixLayout.vue'
 import { useShowsInfinite } from '@/composables/TVMaze/useShowsInfiniteQuery'
+// import AmroflixTypography from '@/components/essentials/AmroflixTypography.vue'
 
 const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useShowsInfinite()
 
@@ -17,6 +18,7 @@ function onReachEnd() {
 
 <template>
   <AmroflixLayout>
+    <!-- <AmroflixTypography :as="'h1'" weight="bold" size="huge">Discover Shows</AmroflixTypography> -->
     <AmroflixCarousel title="Discover Shows" :shows="shows" @reach-end="onReachEnd" />
   </AmroflixLayout>
 </template>
