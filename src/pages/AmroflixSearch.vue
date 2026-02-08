@@ -29,7 +29,13 @@ const displayShows = computed(() => {
     return normalizeToShows(searchResults.value || [])
   }
   // Flatten all pages from infinite query and normalize
-  const flattenedPages = infiniteData.value?.pages.flat() || []
+  // added random sorting to mix up shows
+  const flattenedPages =
+    infiniteData.value?.pages
+      .flat()
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value) || []
   return normalizeToShows(flattenedPages)
 })
 
