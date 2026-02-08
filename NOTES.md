@@ -7,3 +7,7 @@ Similary smaller components can leverage others, for example the button componen
 ## Design system
 
 core tokens, theme tokens and component tokens
+
+## preventing spam
+
+debouncing + caching

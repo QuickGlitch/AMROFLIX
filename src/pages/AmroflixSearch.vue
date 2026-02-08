@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { refDebounced } from '@vueuse/core'
 import AmroflixLayout from '@/components/blocks/AmroflixLayout.vue'
 import { useSearchShows } from '@/composables/TVMaze/useSearchShows'
 import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
 
 const searchQuery = ref('')
-const { data: searchResults, isLoading, isError, error } = useSearchShows(searchQuery)
+const debouncedQuery = refDebounced(searchQuery, 300)
+const { data: searchResults, isLoading, isError, error } = useSearchShows(debouncedQuery)
 </script>
 
 <template>
