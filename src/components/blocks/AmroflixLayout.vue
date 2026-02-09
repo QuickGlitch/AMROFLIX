@@ -36,9 +36,8 @@ function onHeaderSearchSubmit(query: string) {
         <slot name="header__left"
           ><div class="amroflix-layout__header__left">
             <AmroflixButton leading-icon="hamburger" @click="toggleMenu"></AmroflixButton>
-            <h1>Amroflix</h1>
-          </div></slot
-        >
+            <img src="/logo.svg" alt="AmroFlix" class="amroflix-layout__logo" /></div
+        ></slot>
         <div class="amroflix-layout__header__center">
           <slot name="header__center">
             <AmroflixInput
@@ -143,6 +142,11 @@ function onHeaderSearchSubmit(query: string) {
         margin-right: 1rem;
       }
     }
+  }
+
+  &__logo {
+    height: 2.5rem;
+    width: auto;
   }
 
   &__body {

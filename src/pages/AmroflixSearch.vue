@@ -62,7 +62,7 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
   <AmroflixLayout>
     <template #header__center><div /></template>
     <div class="amroflix-search">
-      <AmroflixTypography as="h1" weight="bold" size="huge">Search Shows</AmroflixTypography>
+      <AmroflixTypography as="h1" weight="bold" size="large">Search Shows</AmroflixTypography>
       <div class="amroflix-search__input-wrapper">
         <AmroflixInput v-model="searchQuery" type="search" placeholder="Search for shows..." />
       </div>
