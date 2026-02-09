@@ -64,7 +64,6 @@
   --brand-header-height: 4rem;
   --brand-card-border-radius: 0.5rem;
   --brand-input-border-radius: 0.5rem;
-  --brand-card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   /* typography */
   --theme-text-default-size: var(--text-size-baseline);
@@ -95,6 +94,7 @@
   /* typography */
   --theme-text-default-color: var(--neutral-darkest-grey);
   --theme-text-subtle-color: var(--primary-darker-color);
+  --theme-text-default-card-color: var(--neutral-lightest-grey);
   /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, white);
@@ -102,6 +102,8 @@
   --theme-background-default-color: var(--neutral-light-grey);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
   --theme-background-surface-color: white;
+  --theme-background-gradient: linear-gradient(135deg, white 0%, var(--primary-lighter-color) 100%);
+  --theme-background-card-surface-color: var(--primary-darkest-color);
   /* borders */
   --theme-border-default-color: var(--neutral-grey);
   /* status */
@@ -120,6 +122,7 @@
   /* typography */
   --theme-text-default-color: var(--neutral-lightest-grey);
   --theme-text-subtle-color: var(--primary-dark-color);
+  --theme-text-default-card-color: var(--theme-text-default-color);
   /* cta */
   --theme-cta-primary-color: var(--brand-primary-color);
   --theme-cta-primary-accent-color: color-mix(in srgb, var(--brand-primary-color) 80%, black);
@@ -127,6 +130,8 @@
   --theme-background-default-color: var(--primary-darkest-color);
   --theme-background-contrast-color: var(--brand-secondary-color-soft);
   --theme-background-surface-color: var(--primary-darker-color);
+  --theme-background-gradient: none;
+  --theme-background-card-surface-color: var(--primary-darkest-color);
   /* borders */
   --theme-border-default-color: var(--neutral-darker-grey);
   /* status */

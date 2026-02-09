@@ -61,11 +61,10 @@ const {
 <style lang="scss" scoped>
 .amroflix-card {
   /* component tokens */
-  --amroflix-card-surface-color: var(--theme-background-default-color);
-  --amroflix-card-default-text-color: var(--theme-text-default-color);
+  --amroflix-card-surface-color: var(--theme-background-card-surface-color);
+  --amroflix-card-default-text-color: var(--theme-text-default-card-color);
   --amroflix-card-contrast-text-color: var(--theme-text-secondary-color);
   --amroflix-card-border-radius: var(--brand-card-border-radius);
-  --amroflix-card-shadow: var(--brand-card-shadow);
   --amroflix-card-content-padding: 0.5rem;
   --amroflix-card-title-line-height: 1.5rem;
   --amroflix-card-subtitle-line-height: 1.2rem;
@@ -81,7 +80,6 @@ const {
   background-color: var(--amroflix-card-surface-color);
   color: var(--amroflix-card-default-text-color);
   border-radius: var(--amroflix-card-border-radius);
-  box-shadow: var(--amroflix-card-shadow);
   overflow: hidden;
   flex-direction: column;
 

@@ -151,6 +151,7 @@ function onHeaderSearchSubmit(query: string) {
 
   &__body {
     background-color: var(--amroflix-layout-body-background-color);
+    background-image: var(--theme-background-gradient);
     flex: 1;
     overflow-x: hidden;
     &__content {
