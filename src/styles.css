@@ -55,6 +55,7 @@
   --brand-text-hover-color: var(--secondary-color);
   --brand-darkest-color: var(--neutral-darkest-grey);
   --brand-neutral-color: var(--neutral-grey);
+  --brand-light-neutral-color: var(--neutral-light-grey);
   --theme-text-secondary-color: var(--brand-secondary-color);
   --theme-header-background-color: color-mix(in srgb, var(--primary-darkest-color) 80%, black);
 
@@ -81,6 +82,10 @@
   --theme-duration-default: var(--duration-medium);
   --theme-duration-short: var(--duration-short);
   --theme-duration-long: var(--duration-long);
+
+  /* inputs */
+  --theme-input-max-width: 700px;
+  --theme-input-padding: 0.5rem 1rem;
 }
 
 /******************************/
@@ -101,6 +106,11 @@
   --theme-border-default-color: var(--neutral-grey);
   /* status */
   --theme-status-error-color: rgb(229, 57, 53);
+  /* inputs */
+  --theme-input-background-color: var(--neutral-light-grey);
+  --theme-input-border-color: var(--primary-color);
+  --theme-input-font-color: var(--neutral-darkest-grey);
+  --theme-input-focus-border-color: var(--secondary-color);
 }
 
 /*****************************/
@@ -121,4 +131,9 @@
   --theme-border-default-color: var(--neutral-darker-grey);
   /* status */
   --theme-status-error-color: rgb(244, 67, 54);
+  /* inputs */
+  --theme-input-background-color: var(--neutral-light-grey);
+  --theme-input-border-color: var(--primary-color);
+  --theme-input-font-color: var(--neutral-darkest-grey);
+  --theme-input-focus-border-color: var(--secondary-color);
 }

@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { refDebounced } from '@vueuse/core'
 import AmroflixLayout from '@/components/blocks/AmroflixLayout.vue'
 import { useSearchShows } from '@/composables/TVMaze/useSearchShows'
 import { useShowsInfinite } from '@/composables/TVMaze/useShowsInfiniteQuery'
 import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
+import AmroflixInput from '@/components/essentials/AmroflixInput.vue'
 import { normalizeToShows } from '@/utils/mappers/tvmaze-mapper'
+import AmroflixTypography from '@/components/essentials/AmroflixTypography.vue'
 
+const route = useRoute()
 const searchQuery = ref('')
 const debouncedQuery = refDebounced(searchQuery, 300)
+
+onMounted(() => {
+  const q = route.query.q
+  if (typeof q === 'string' && q.trim()) {
+    searchQuery.value = q
+  }
+})
 const hasSearchQuery = computed(() => debouncedQuery.value.trim().length > 0)
 
 const {
@@ -50,13 +61,9 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
   <AmroflixLayout>
     <template #header__center><div /></template>
     <div class="amroflix-search">
+      <AmroflixTypography as="h1" weight="bold" size="huge">Search Shows</AmroflixTypography>
       <div class="amroflix-search__input-wrapper">
-        <input
-          v-model="searchQuery"
-          type="text"
-          placeholder="Search for shows..."
-          class="amroflix-search__input"
-        />
+        <AmroflixInput v-model="searchQuery" type="search" placeholder="Search for shows..." />
       </div>
 
       <div v-if="isLoading" class="amroflix-search__status">Loading...</div>
@@ -91,17 +98,16 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
   /* component tokens */
   --amroflix-search-padding: 1.5rem;
   --amroflix-search-results-gap: 2rem;
-  --amroflix-search-input-padding: 0.75rem 1rem;
-  --amroflix-search-input-border-radius: var(--brand-input-border-radius);
-  --amroflix-search-input-border-color: var(--theme-border-default-color);
-  --amroflix-search-input-background-color: var(--theme-background-surface-color);
-  --amroflix-search-input-text-color: var(--theme-text-default-color);
-  --amroflix-search-input-font-size: var(--theme-text-default-size);
   --amroflix-search-status-padding: 2rem;
   --amroflix-search-status-text-color: var(--theme-text-subtle-color);
   --amroflix-search-error-color: var(--theme-status-error-color);
 
   padding: var(--amroflix-search-padding);
+
+  h1 {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 
   &__results {
     display: grid;
@@ -116,17 +122,7 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
 
 .amroflix-search__input-wrapper {
   margin-bottom: var(--amroflix-search-padding);
-}
-
-.amroflix-search__input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: var(--amroflix-search-input-padding);
-  border-radius: var(--amroflix-search-input-border-radius);
-  border: 1px solid var(--amroflix-search-input-border-color);
-  font-size: var(--amroflix-search-input-font-size);
-  background: var(--amroflix-search-input-background-color);
-  color: var(--amroflix-search-input-text-color);
+  margin-bottom: 2rem;
 }
 
 .amroflix-search__status {

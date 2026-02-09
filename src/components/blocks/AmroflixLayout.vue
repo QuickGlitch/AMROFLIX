@@ -1,15 +1,27 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import AmroflixButton from '../essentials/AmroflixButton.vue'
+import AmroflixInput from '../essentials/AmroflixInput.vue'
 import AmroflixSideBar from './AmroflixSideBar/AmroflixSideBar.vue'
 import { useTheme } from '../../composables/useTheme'
-import { navigationItems } from '../../router/navigation'
+import { navigationItems, ROUTE_SEARCH } from '../../router/navigation'
 
+const router = useRouter()
 const { theme, toggleTheme } = useTheme()
+
+const headerSearchQuery = ref('')
 
 const isMenuOpen = ref<boolean>(false)
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+}
+
+function onHeaderSearchSubmit(query: string) {
+  if (query.trim()) {
+    router.push({ name: ROUTE_SEARCH, query: { q: query.trim() } })
+    headerSearchQuery.value = ''
+  }
 }
 </script>
 
@@ -29,7 +41,13 @@ const toggleMenu = () => {
         >
         <div class="amroflix-layout__header__center">
           <slot name="header__center">
-            <input type="text" placeholder="Search..." />
+            <AmroflixInput
+              v-model="headerSearchQuery"
+              type="search"
+              placeholder="Search for shows..."
+              icon="search"
+              @search="onHeaderSearchSubmit"
+            />
           </slot>
         </div>
         <slot name="header__right">
