@@ -5,10 +5,12 @@ import Accessibility from 'embla-carousel-accessibility'
 import type { TVMazeShow } from '@/utils/services/TVMazeService'
 import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
 import AmroflixButton from '@/components/essentials/AmroflixButton.vue'
+import AmroSpinner from '@/components/essentials/AmroSpinner.vue'
 
-const { title, shows } = defineProps<{
+const { title, shows, loading } = defineProps<{
   title?: string
   shows: TVMazeShow[]
+  loading?: boolean
 }>()
 
 // Emit event to parent when near end of carousel for infinite loading
@@ -97,8 +99,23 @@ onUnmounted(() => {
     <div v-if="title" class="amroflix-carousel__header">
       <h2 class="amroflix-carousel__title">{{ title }}</h2>
       <div class="amroflix-carousel__nav">
-        <AmroflixButton ref="prevBtnRef" variant="plain" leading-icon="explore" @click="goToPrev" />
-        <AmroflixButton ref="nextBtnRef" variant="plain" leading-icon="explore" @click="goToNext" />
+        <AmroSpinner v-if="loading" size="small" />
+        <template v-else>
+          <AmroflixButton
+            class="amroflix-carousel__nav_button"
+            ref="prevBtnRef"
+            variant="plain"
+            leading-icon="chevron_left"
+            @click="goToPrev"
+          />
+          <AmroflixButton
+            class="amroflix-carousel__nav_button"
+            ref="nextBtnRef"
+            variant="plain"
+            leading-icon="chevron_right"
+            @click="goToNext"
+          />
+        </template>
       </div>
     </div>
 
@@ -130,8 +147,15 @@ onUnmounted(() => {
   --amroflix-carousel-slide-width: 200px;
   --amroflix-carousel-title-color: var(--theme-text-default-color);
   --amroflix-carousel-nav-color: var(--theme-text-default-color);
+  --amroflix-carousel-nav-hover-color: var(--brand-secondary-color);
 
   padding: var(--amroflix-carousel-padding);
+
+  &__nav_button {
+    &:hover {
+      color: var(--amroflix-carousel-nav-hover-color);
+    }
+  }
 
   &__header {
     display: flex;
@@ -151,10 +175,6 @@ onUnmounted(() => {
     display: flex;
     gap: 0.5rem;
     color: var(--amroflix-carousel-nav-color);
-
-    .amroflix-button--plain:last-child {
-      transform: scaleX(-1);
-    }
   }
 
   &__live-region {

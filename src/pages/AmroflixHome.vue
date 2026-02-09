@@ -5,7 +5,7 @@ import AmroflixLayout from '@/components/blocks/AmroflixLayout.vue'
 import { useShowsInfinite } from '@/composables/TVMaze/useShowsInfiniteQuery'
 import { useShowsByGenre } from '@/composables/TVMaze/useShowsByGenre'
 
-const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useShowsInfinite()
+const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useShowsInfinite()
 
 const shows = computed(() => data.value?.pages.flat() || [])
 const { showsByGenre } = useShowsByGenre(shows)
@@ -19,12 +19,18 @@ function onReachEnd() {
 
 <template>
   <AmroflixLayout>
-    <AmroflixCarousel title="Discover Shows" :shows="shows" @reach-end="onReachEnd" />
+    <AmroflixCarousel
+      title="Discover Shows"
+      :shows="shows"
+      :loading="isLoading"
+      @reach-end="onReachEnd"
+    />
     <AmroflixCarousel
       v-for="[genre, genreShows] in showsByGenre"
       :key="genre"
       :title="genre"
       :shows="genreShows"
+      :loading="isLoading"
       @reach-end="onReachEnd"
     />
   </AmroflixLayout>

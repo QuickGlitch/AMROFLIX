@@ -7,6 +7,7 @@ import { useSearchShows } from '@/composables/TVMaze/useSearchShows'
 import { useShowsInfinite } from '@/composables/TVMaze/useShowsInfiniteQuery'
 import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
 import AmroflixInput from '@/components/essentials/AmroflixInput.vue'
+import AmroSpinner from '@/components/essentials/AmroSpinner.vue'
 import { normalizeToShows } from '@/utils/mappers/tvmaze-mapper'
 import AmroflixTypography from '@/components/essentials/AmroflixTypography.vue'
 
@@ -66,7 +67,7 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
         <AmroflixInput v-model="searchQuery" type="search" placeholder="Search for shows..." />
       </div>
 
-      <div v-if="isLoading" class="amroflix-search__status">Loading...</div>
+      <AmroSpinner v-if="isLoading" />
 
       <div v-else-if="isError" class="amroflix-search__status amroflix-search__status--error">
         {{ error?.message ?? 'Something went wrong' }}
