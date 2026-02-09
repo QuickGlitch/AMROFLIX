@@ -5,7 +5,7 @@ import Accessibility from 'embla-carousel-accessibility'
 import type { TVMazeShow } from '@/utils/services/TVMazeService'
 import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
 import AmroflixButton from '@/components/essentials/AmroflixButton.vue'
-import AmroSpinner from '@/components/essentials/AmroSpinner.vue'
+import AmroflixSpinner from '@/components/essentials/AmroflixSpinner.vue'
 
 const { title, shows, loading } = defineProps<{
   title?: string
@@ -99,7 +99,7 @@ onUnmounted(() => {
     <div v-if="title" class="amroflix-carousel__header">
       <h2 class="amroflix-carousel__title">{{ title }}</h2>
       <div class="amroflix-carousel__nav">
-        <AmroSpinner v-if="loading" size="small" />
+        <AmroflixSpinner v-if="loading" size="small" />
         <template v-else>
           <AmroflixButton
             class="amroflix-carousel__nav_button"
