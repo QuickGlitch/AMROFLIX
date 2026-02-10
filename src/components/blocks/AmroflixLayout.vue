@@ -61,7 +61,7 @@ function onHeaderSearchSubmit(query: string) {
       </slot>
     </header>
 
-    <AmroflixSideBar :is-open="isMenuOpen" :items="navigationItems" />
+    <AmroflixSideBar :is-open="isMenuOpen" :items="navigationItems" @close="isMenuOpen = false" />
 
     <main class="amroflix-layout__body">
       <div class="amroflix-layout__body__content">
@@ -76,11 +76,13 @@ function onHeaderSearchSubmit(query: string) {
 </template>
 
 <style lang="scss" scoped>
+@use '@/styles/breakpoints' as *;
+
 .amroflix-layout {
   /* component tokens */
   --amroflix-layout-sidebar-width-closed: 4rem;
   --amroflix-layout-sidebar-width-open: 12rem;
-  --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-closed);
+  --amroflix-layout-sidebar-width: 0;
   --amroflix-layout-header-text-color: var(--theme-text-default-color);
   --amroflix-layout-header-height: var(--brand-header-height);
   --amroflix-layout-header-background-color: var(--theme-header-background-color);
@@ -94,8 +96,18 @@ function onHeaderSearchSubmit(query: string) {
   min-height: 100vh;
   color: var(--amroflix-layout-default-text-color);
 
-  &--sidebar-open {
-    --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-open);
+  // Mobile: Sidebar doesn't take space (overlays)
+  @include mobile {
+    --amroflix-layout-sidebar-width: 0;
+  }
+
+  // Desktop: Sidebar takes space
+  @include desktop {
+    --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-closed);
+
+    &--sidebar-open {
+      --amroflix-layout-sidebar-width: var(--amroflix-layout-sidebar-width-open);
+    }
   }
 
   &__header {
@@ -110,15 +122,14 @@ function onHeaderSearchSubmit(query: string) {
     background-color: var(--amroflix-layout-header-background-color);
     color: var(--amroflix-layout-header-text-color);
     padding: 1rem 0.5rem;
+    gap: 0.5rem;
 
     &__left {
-      flex-shrink: 1;
+      flex-shrink: 0;
       align-items: center;
       display: flex;
       justify-content: start;
-      > * {
-        margin-right: 1rem;
-      }
+      gap: 0.5rem;
     }
 
     &__center {
@@ -126,20 +137,21 @@ function onHeaderSearchSubmit(query: string) {
       align-items: center;
       display: flex;
       justify-content: center;
-      padding: 0 1rem;
-      > * {
-        margin-right: 1rem;
+      padding: 0 0.5rem;
+
+      @include mobile {
+        display: hidden;
       }
     }
 
     &__right {
-      flex-shrink: 1;
-      min-width: 12rem;
+      flex-shrink: 0;
       align-items: center;
       display: flex;
       justify-content: end;
-      > * {
-        margin-right: 1rem;
+
+      @include desktop {
+        min-width: 8rem;
       }
     }
   }
@@ -147,6 +159,10 @@ function onHeaderSearchSubmit(query: string) {
   &__logo {
     height: 2.5rem;
     width: auto;
+
+    @include mobile {
+      height: 2rem;
+    }
   }
 
   &__body {
@@ -154,13 +170,20 @@ function onHeaderSearchSubmit(query: string) {
     background-image: var(--theme-background-gradient);
     flex: 1;
     overflow-x: hidden;
+
     &__content {
       box-sizing: border-box;
-      padding: 1rem 0 1rem 1rem;
+      padding: 1rem;
       margin-top: var(--amroflix-layout-header-height);
       margin-left: var(--amroflix-layout-sidebar-width);
       width: calc(100% - var(--amroflix-layout-sidebar-width));
-      transition: margin-left 0.3s ease;
+      transition:
+        margin-left 0.3s ease,
+        width 0.3s ease;
+
+      @include mobile {
+        padding: 0.5rem;
+      }
     }
   }
 
@@ -169,6 +192,10 @@ function onHeaderSearchSubmit(query: string) {
     color: var(--amroflix-layout-footer-text-color);
     padding: 1rem 2rem;
     text-align: center;
+
+    @include mobile {
+      padding: 1rem;
+    }
   }
 }
 </style>

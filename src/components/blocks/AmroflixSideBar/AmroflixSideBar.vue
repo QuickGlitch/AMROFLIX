@@ -8,12 +8,17 @@ const { isOpen = false, items = [] } = defineProps<{
   items?: AmroflixNavigationItem[]
 }>()
 
+const emit = defineEmits<{
+  close: []
+}>()
+
 const router = useRouter()
 const route = useRoute()
 
 const navigate = (item: AmroflixNavigationItem) => {
   if (item.routeName) {
     router.push({ name: item.routeName })
+    emit('close') // Close sidebar on mobile after navigation
   }
 }
 </script>
@@ -39,6 +44,8 @@ const navigate = (item: AmroflixNavigationItem) => {
 </template>
 
 <style lang="scss" scoped>
+@use '@/styles/breakpoints' as *;
+
 .amroflix-sidebar {
   /* component tokens */
   --amroflix-sidebar-background-color: var(--theme-background-contrast-color);
@@ -56,15 +63,31 @@ const navigate = (item: AmroflixNavigationItem) => {
   padding: 1rem;
   gap: 1rem;
   overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    width 0.3s ease;
+  z-index: 1;
 
-  &--closed {
-    width: var(--amroflix-layout-sidebar-width-closed, 4rem);
-    transition: width 0.3s ease;
+  // Mobile-first: Hidden by default, slide in from left when open
+  @include mobile {
+    // width: var(--amroflix-layout-sidebar-width-open, 16rem);
+    width: 100%;
+    transform: translateX(-100%);
+
+    &--open {
+      transform: translateX(0);
+    }
   }
 
-  &--open {
-    width: var(--amroflix-layout-sidebar-width-open, 12rem);
-    transition: width 0.3s ease;
+  // Desktop: Always visible, toggle between collapsed and expanded
+  @include desktop {
+    &--closed {
+      width: var(--amroflix-layout-sidebar-width-closed, 4rem);
+    }
+
+    &--open {
+      width: var(--amroflix-layout-sidebar-width-open, 12rem);
+    }
   }
 
   > :first-child {

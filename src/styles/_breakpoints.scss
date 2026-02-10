@@ -1,0 +1,17 @@
+// Breakpoint values
+$mobile-max: 768px;
+$desktop-min: 769px;
+
+// Mobile-first mixin: applies styles for mobile screens only (max-width: 768px)
+@mixin mobile {
+  @media (max-width: $mobile-max) {
+    @content;
+  }
+}
+
+// Desktop mixin: applies styles for desktop screens (min-width: 769px)
+@mixin desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}

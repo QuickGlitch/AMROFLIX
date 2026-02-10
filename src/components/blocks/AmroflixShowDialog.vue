@@ -126,6 +126,8 @@ function closeDialog() {
 </template>
 
 <style lang="scss">
+@use '@/styles/breakpoints' as *;
+
 .amroflix-show-dialog {
   /* component tokens */
   --amroflix-dialog-backdrop-color: rgba(0, 0, 0, 0.6);
@@ -156,20 +158,43 @@ function closeDialog() {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
     overflow-y: auto;
+
+    // Mobile: No padding for full screen
+    @include mobile {
+      padding: 0;
+    }
+
+    // Desktop: Add padding
+    @include desktop {
+      padding: 1rem;
+    }
   }
 
   &__panel {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
     background-color: var(--theme-background-surface-color);
-    border-radius: var(--brand-card-border-radius);
-    padding: 1.5rem;
     color: var(--theme-text-default-color);
+
+    // Mobile: Full screen with padding at bottom for sticky button
+    @include mobile {
+      max-width: 100%;
+      min-height: 100vh;
+      max-height: none;
+      overflow-y: auto;
+      border-radius: 0;
+      padding: 1.5rem 1rem 5rem 1rem; // Extra padding at bottom for sticky button
+    }
+
+    // Desktop: Centered modal
+    @include desktop {
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: var(--brand-card-border-radius);
+      padding: 1.5rem;
+    }
 
     &--animate {
       transition:
@@ -184,10 +209,25 @@ function closeDialog() {
   }
 
   &__close {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
     z-index: 10;
+
+    // Mobile: Sticky at bottom
+    @include mobile {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      border-radius: 0;
+      margin-top: 1rem;
+    }
+
+    // Desktop: Top right corner
+    @include desktop {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
   }
 
   &__error {
@@ -200,19 +240,26 @@ function closeDialog() {
     display: flex;
     gap: 1.5rem;
 
-    @media (max-width: 600px) {
+    @include mobile {
       flex-direction: column;
+      gap: 1rem;
+    }
+
+    @include desktop {
+      flex-direction: row;
     }
   }
 
   &__media {
     flex-shrink: 0;
-    width: 300px;
 
-    @media (max-width: 600px) {
+    @include mobile {
       width: 100%;
-      max-width: 300px;
-      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    @include desktop {
+      width: 300px;
     }
 
     img {
