@@ -3,16 +3,16 @@ import type { IconName } from './AmroflixIcon/AmroflixIcon.vue'
 import AmroflixIcon from './AmroflixIcon/AmroflixIcon.vue'
 import AmroflixTypography from './AmroflixTypography.vue'
 
-export type AmroflixButtonVariants = 'primary' | 'secondary' | 'plain'
+export type AmroflixButtonVariants = 'primary' | 'plain'
 
 const {
-  tag = 'button',
+  as = 'button',
   variant = 'primary',
   leadingIcon = '',
   trailingIcon,
 } = defineProps<{
   // defaults to 'button' but can be used for other tags (e.g., 'a') depending on UX
-  tag?: string
+  as?: string
   variant?: AmroflixButtonVariants
   leadingIcon?: IconName
   trailingIcon?: IconName
@@ -20,7 +20,7 @@ const {
 </script>
 
 <template>
-  <component :is="tag" :class="['amroflix-button', `amroflix-button--${variant}`]">
+  <component :is="as" :class="['amroflix-button', `amroflix-button--${variant}`]">
     <slot name="leadingIcon">
       <AmroflixTypography
         v-if="leadingIcon"

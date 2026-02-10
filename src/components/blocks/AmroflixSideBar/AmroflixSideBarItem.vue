@@ -28,7 +28,12 @@ const { label, icon, isOpen = false, selected = false } = defineProps<AmroflixSi
       class="amroflix-sidebar-item__background"
       :class="{ 'amroflix-sidebar-item__background--small': !isOpen }"
     />
-    <AmroflixButton class="amroflix-sidebar-item__button" variant="plain" :leading-icon="icon">
+    <AmroflixButton
+      as="a"
+      class="amroflix-sidebar-item__button"
+      variant="plain"
+      :leading-icon="icon"
+    >
       <Transition name="fade">
         <AmroflixTypography v-if="isOpen" size="large" weight="bold">
           {{ label }}

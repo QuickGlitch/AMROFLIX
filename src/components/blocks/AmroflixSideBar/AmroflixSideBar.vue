@@ -18,7 +18,7 @@ const navigate = (item: AmroflixNavigationItem) => {
 }
 </script>
 <template>
-  <div
+  <nav
     class="amroflix-sidebar"
     :class="isOpen ? 'amroflix-sidebar--open' : 'amroflix-sidebar--closed'"
   >
@@ -30,10 +30,12 @@ const navigate = (item: AmroflixNavigationItem) => {
         :label="item.label"
         :icon="item.icon"
         :selected="route.name === item.routeName"
+        tabindex="1"
         @click="navigate(item)"
+        @keydown.enter="navigate(item)"
       />
     </slot>
-  </div>
+  </nav>
 </template>
 
 <style lang="scss" scoped>

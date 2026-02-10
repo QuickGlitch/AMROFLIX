@@ -29,6 +29,7 @@ function onReachEnd() {
       :loading="isLoading"
       @reach-end="onReachEnd"
       @show-select="openDialog"
+      tabindex="2"
     />
     <AmroflixCarousel
       v-for="[genre, genreShows] in showsByGenre"

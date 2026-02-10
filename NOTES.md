@@ -15,3 +15,7 @@ debouncing + caching
 ## singleton
 
 theming
+
+## semantics and a11y
+
+tabindex, nav
