@@ -14,8 +14,10 @@ const { title, shows, loading } = defineProps<{
 }>()
 
 // Emit event to parent when near end of carousel for infinite loading
+// emit show select to open dialog (card)
 const emit = defineEmits<{
   reachEnd: []
+  showSelect: [showId: number]
 }>()
 
 const prevBtnRef = ref<InstanceType<typeof AmroflixButton> | null>(null)
@@ -132,6 +134,7 @@ onUnmounted(() => {
               src: show.image?.medium || '',
               alt: show.name,
             }"
+            @click="emit('showSelect', show.id)"
           />
         </div>
       </div>

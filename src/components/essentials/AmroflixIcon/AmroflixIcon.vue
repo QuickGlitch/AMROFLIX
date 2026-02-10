@@ -12,6 +12,7 @@ import CircleStarIcon from './circle_star.svg?raw'
 import CogIcon from './cog.svg?raw'
 import ChevronLeftIcon from './chevron_left.svg?raw'
 import ChevronRightIcon from './chevron_right.svg?raw'
+import CloseIcon from './close.svg?raw'
 
 export type IconName =
   | 'hamburger'
@@ -25,6 +26,7 @@ export type IconName =
   | 'cog'
   | 'chevron_left'
   | 'chevron_right'
+  | 'close'
 
 const { name } = defineProps<{
   name: IconName
@@ -42,6 +44,7 @@ const iconMap: Record<IconName, string> = {
   cog: CogIcon,
   chevron_left: ChevronLeftIcon,
   chevron_right: ChevronRightIcon,
+  close: CloseIcon,
 }
 
 const svgContent = computed(() => {

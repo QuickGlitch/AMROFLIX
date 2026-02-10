@@ -77,11 +77,19 @@ const {
   --amroflix-card-horizontal-media-width: 40%;
   --amroflix-card-media-background: var(--neutral-darkest-grey);
 
+  margin: 0.5rem 0.5rem;
   background-color: var(--amroflix-card-surface-color);
   color: var(--amroflix-card-default-text-color);
   border-radius: var(--amroflix-card-border-radius);
   overflow: hidden;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform var(--theme-duration-short) ease;
+
+  &:hover {
+    transform: scale(1.02);
+    --amroflix-card-surface-color: var(--brand-primary-dark-color);
+  }
 
   &--vertical {
     width: 100%;

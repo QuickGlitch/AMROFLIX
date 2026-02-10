@@ -3,8 +3,10 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { refDebounced } from '@vueuse/core'
 import AmroflixLayout from '@/components/blocks/AmroflixLayout.vue'
+import AmroflixShowDialog from '@/components/blocks/AmroflixShowDialog.vue'
 import { useSearchShows } from '@/composables/TVMaze/useSearchShows'
 import { useShowsInfinite } from '@/composables/TVMaze/useShowsInfiniteQuery'
+import { useShowDialog } from '@/composables/useShowDialog'
 import AmroflixCard from '@/components/blocks/AmroflixCard.vue'
 import AmroflixInput from '@/components/essentials/AmroflixInput.vue'
 import AmroflixSpinner from '@/components/essentials/AmroflixSpinner.vue'
@@ -56,6 +58,8 @@ const isLoading = computed(() =>
 )
 const isError = computed(() => (hasSearchQuery.value ? isSearchError.value : isInfiniteError.value))
 const error = computed(() => (hasSearchQuery.value ? searchError.value : infiniteError.value))
+
+const { selectedShowId, isDialogOpen, openDialog, closeDialog } = useShowDialog()
 </script>
 
 <template>
@@ -86,11 +90,14 @@ const error = computed(() => (hasSearchQuery.value ? searchError.value : infinit
             src: show.image?.medium || '',
             alt: show.name,
           }"
+          @click="openDialog(show.id)"
         />
       </ul>
 
       <div v-else-if="hasSearchQuery" class="amroflix-search__status">No results found.</div>
     </div>
+
+    <AmroflixShowDialog :show-id="selectedShowId" :open="isDialogOpen" @close="closeDialog" />
   </AmroflixLayout>
 </template>
 

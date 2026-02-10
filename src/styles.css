@@ -50,6 +50,7 @@
   /* GLOBAL to all themes */
   /* colors */
   --brand-primary-color: var(--primary-color);
+  --brand-primary-dark-color: var(--primary-darker-color);
   --brand-secondary-color: var(--secondary-color);
   --brand-secondary-color-soft: var(--secondary-dark-color);
   --brand-text-hover-color: var(--secondary-color);
@@ -90,7 +91,7 @@
 /******************************/
 /* theme tokens - light theme */
 /******************************/
-:root [data-theme='light'] {
+html[data-theme='light'] {
   /* typography */
   --theme-text-default-color: var(--neutral-darkest-grey);
   --theme-text-subtle-color: var(--primary-darker-color);
@@ -118,7 +119,7 @@
 /*****************************/
 /* theme tokens - dark theme */
 /*****************************/
-:root [data-theme='dark'] {
+html[data-theme='dark'] {
   /* typography */
   --theme-text-default-color: var(--neutral-lightest-grey);
   --theme-text-subtle-color: var(--primary-dark-color);
@@ -141,4 +142,6 @@
   --theme-input-border-color: var(--primary-color);
   --theme-input-font-color: var(--neutral-darkest-grey);
   --theme-input-focus-border-color: var(--secondary-color);
+
+  background-color: var(--theme-background-default-color);
 }

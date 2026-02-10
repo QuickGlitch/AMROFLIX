@@ -17,6 +17,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.23",
     "@tanstack/vue-query": "^5.92.9",
     "@vueuse/core": "^14.2.0",
     "embla-carousel-accessibility": "9.0.0-rc01",

@@ -9,11 +9,17 @@ export interface ThemeContext {
 
 export const ThemeKey: InjectionKey<ThemeContext> = Symbol('theme')
 
+function applyTheme(theme: Theme) {
+  document.documentElement.setAttribute('data-theme', theme)
+}
+
 export function provideTheme(initialTheme: Theme = 'dark') {
   const theme = ref<Theme>(initialTheme)
+  applyTheme(initialTheme)
 
   const toggleTheme = () => {
     theme.value = theme.value === 'light' ? 'dark' : 'light'
+    applyTheme(theme.value)
   }
 
   const context: ThemeContext = {

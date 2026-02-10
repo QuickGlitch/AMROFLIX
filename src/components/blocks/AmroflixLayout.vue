@@ -27,9 +27,9 @@ function onHeaderSearchSubmit(query: string) {
 
 <template>
   <div
+    id="amroflix-app"
     class="amroflix-layout"
     :class="{ 'amroflix-layout--sidebar-open': isMenuOpen }"
-    :data-theme="theme"
   >
     <header class="amroflix-layout__header">
       <slot name="header">

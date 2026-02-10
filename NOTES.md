@@ -11,3 +11,7 @@ core tokens, theme tokens and component tokens
 ## preventing spam
 
 debouncing + caching
+
+## singleton
+
+theming

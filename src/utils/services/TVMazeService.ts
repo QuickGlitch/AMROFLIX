@@ -98,3 +98,8 @@ export async function getShowsByPage(page?: number): Promise<TVMazeShow[]> {
 
   return fetchRequest<TVMazeShow[]>(url, undefined, TVMAZE_SERVICE_ID)
 }
+
+export async function getShowById(id: number): Promise<TVMazeShow> {
+  const url = `${TVMAZE_BASE_URL}/shows/${id}`
+  return fetchRequest<TVMazeShow>(url, undefined, TVMAZE_SERVICE_ID)
+}
