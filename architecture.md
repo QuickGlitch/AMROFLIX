@@ -14,7 +14,7 @@ The Vue 3 setup comes with several DX features we leverage here: vite, typescrip
 
 #### Data
 
-The data for this application comes from a single source: the (REST) api of https://www.tvmaze.com/. Since we are only loading data from this source and it is not coupled to the user, we can make the client application stateless. (In practice this assumption would not hold as users would nee to be tracked for personalized content, preferences etc.)
+The data for this application comes from a single source: the (REST) api of https://www.tvmaze.com/. Since we are only loading data from this source and it is not coupled to the user, we can make the client application stateless. (In practice this assumption would not necessarily hold as users might be tracked for personalized content, preferences etc.)
 
 ## State Management
 
