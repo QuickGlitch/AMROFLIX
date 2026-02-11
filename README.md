@@ -2,6 +2,8 @@
 
 A Vue application that replicates the show browsing UI of a typical streaming platform.
 
+View it live at [https://abndemo.gobode.com/](https://abndemo.gobode.com/)
+
 ## Architecture
 
 See [architecture.md](./architecture.md)
