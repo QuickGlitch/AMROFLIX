@@ -53,12 +53,6 @@ function closeDialog() {
           leave-to="amroflix-show-dialog__panel--hidden"
         >
           <DialogPanel class="amroflix-show-dialog__panel">
-            <AmroflixButton
-              class="amroflix-show-dialog__close"
-              leading-icon="close"
-              @click="closeDialog"
-            />
-
             <AmroflixSpinner v-if="isLoading" size="large" label="Loading show details..." />
 
             <div v-else-if="isError" class="amroflix-show-dialog__error">
@@ -118,6 +112,12 @@ function closeDialog() {
                 </div>
               </div>
             </template>
+
+            <AmroflixButton
+              class="amroflix-show-dialog__close"
+              leading-icon="close"
+              @click="closeDialog"
+            />
           </DialogPanel>
         </TransitionChild>
       </div>
@@ -156,18 +156,17 @@ function closeDialog() {
     position: fixed;
     inset: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
     overflow-y: auto;
 
-    // Mobile: No padding for full screen
     @include mobile {
       padding: 0;
+      align-items: flex-start;
     }
 
-    // Desktop: Add padding
     @include desktop {
       padding: 1rem;
+      align-items: center;
     }
   }
 
@@ -177,17 +176,13 @@ function closeDialog() {
     background-color: var(--theme-background-surface-color);
     color: var(--theme-text-default-color);
 
-    // Mobile: Full screen with padding at bottom for sticky button
     @include mobile {
       max-width: 100%;
       min-height: 100vh;
-      max-height: none;
-      overflow-y: auto;
       border-radius: 0;
-      padding: 1.5rem 1rem 5rem 1rem; // Extra padding at bottom for sticky button
+      padding: 1.5rem 1rem 3rem 1rem;
     }
 
-    // Desktop: Centered modal
     @include desktop {
       max-width: 800px;
       max-height: 90vh;
@@ -211,18 +206,20 @@ function closeDialog() {
   &__close {
     z-index: 10;
 
-    // Mobile: Sticky at bottom
     @include mobile {
       position: sticky;
-      bottom: 0;
+      bottom: 1rem;
       left: 0;
       right: 0;
-      width: 100%;
-      border-radius: 0;
-      margin-top: 1rem;
+      width: calc(100% - 2rem);
+      margin: 0 1rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+      background-color: var(
+        --brand-secondary-color
+      ) !important; // generally not what you want to use but done for expediency in this case
     }
 
-    // Desktop: Top right corner
     @include desktop {
       position: absolute;
       top: 0.75rem;

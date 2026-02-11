@@ -59,6 +59,8 @@ const {
 </template>
 
 <style lang="scss" scoped>
+@use '@/styles/breakpoints' as *;
+
 .amroflix-card {
   /* component tokens */
   --amroflix-card-surface-color: var(--theme-background-card-surface-color);
@@ -94,7 +96,9 @@ const {
   &--vertical {
     width: 100%;
     min-width: var(--amroflix-card-vertical-width);
-    max-width: var(--amroflix-card-vertical-width);
+    @include desktop {
+      max-width: var(--amroflix-card-vertical-width);
+    }
     height: var(--amroflix-card-vertical-height);
 
     .amroflix-card__media_section {

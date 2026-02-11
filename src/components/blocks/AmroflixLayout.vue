@@ -140,7 +140,7 @@ function onHeaderSearchSubmit(query: string) {
       padding: 0 0.5rem;
 
       @include mobile {
-        display: hidden;
+        visibility: hidden; // no search bar on mobile
       }
     }
 

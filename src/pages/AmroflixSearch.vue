@@ -102,6 +102,8 @@ const { selectedShowId, isDialogOpen, openDialog, closeDialog } = useShowDialog(
 </template>
 
 <style lang="scss" scoped>
+@use '@/styles/breakpoints' as *;
+
 .amroflix-search {
   /* component tokens */
   --amroflix-search-padding: 1.5rem;
@@ -120,7 +122,9 @@ const { selectedShowId, isDialogOpen, openDialog, closeDialog } = useShowDialog(
   &__results {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--amroflix-search-results-gap);
+    @include desktop {
+      gap: var(--amroflix-search-results-gap);
+    }
     list-style: none;
     padding: 0;
     margin: 0;

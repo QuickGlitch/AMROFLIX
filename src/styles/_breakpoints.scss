@@ -1,15 +1,20 @@
 // Breakpoint values
-$mobile-max: 768px;
-$desktop-min: 769px;
+$mobile-max: 480px;
+$tablet-max: 719px;
+$desktop-min: 720px;
 
-// Mobile-first mixin: applies styles for mobile screens only (max-width: 768px)
 @mixin mobile {
   @media (max-width: $mobile-max) {
     @content;
   }
 }
 
-// Desktop mixin: applies styles for desktop screens (min-width: 769px)
+@mixin tablet {
+  @media (min-width: calc($mobile-max + 1)) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media (min-width: $desktop-min) {
     @content;
