@@ -1,4 +1,4 @@
-# Amorflix Arhcitecture
+# Amroflix Arhcitecture
 
 ## Stack
 
