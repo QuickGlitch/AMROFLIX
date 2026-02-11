@@ -23,6 +23,7 @@ const emit = defineEmits<{
 const inputAttrs = computed(() => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { icon, ...rest } = props
+  // @ts-expect-error Expression produces a union type that is too complex to represent.
   return rest as InputHTMLAttributes
 })
 

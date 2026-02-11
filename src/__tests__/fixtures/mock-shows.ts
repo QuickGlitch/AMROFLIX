@@ -1,3 +1,5 @@
+import type { TVMazeShow } from '../../utils/services/TVMazeService'
+
 export const mockShow: TVMazeShow = {
   id: 1,
   url: 'https://www.tvmaze.com/shows/1/under-the-dome',
